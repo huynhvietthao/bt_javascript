@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Giá hoa quả</title>
+
+    <style>
+        body {
+            font-family: Georgia, serif;
+        }
+
+        .container {
+            width: 280px;
+            margin: 50px auto;
+            padding: 15px;
+            border: 1px solid gray;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-top: 0;
+        }
+
+        input {
+            width: 185px;
+            padding: 5px;
+        }
+
+        button {
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 30px;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Giá hoa quả</h1>
+
+        <input type="text" id="ten_hoa_qua"
+               placeholder="Nhập tên hoa quả">
+
+        <button onclick="xemGia()">Xem giá</button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+        function xemGia() {
+
+            let ten = document.getElementById("ten_hoa_qua").value.trim().toLowerCase();
+
+            let gia = 0;
+
+            switch (ten) {
+
+                case "ổi":
+                    gia = 20000;
+                    break;
+
+                case "dưa hấu":
+                    gia = 20000;
+                    break;
+
+                case "táo":
+                    gia = 30000;
+                    break;
+
+                case "cam":
+                    gia = 40000;
+                    break;
+
+                case "chôm chôm":
+                    gia = 40000;
+                    break;
+
+                case "măng cụt":
+                    gia = 50000;
+                    break;
+
+                default:
+                    gia = 0;
+            }
+
+            if (ten == "") {
+                document.getElementById("result").innerHTML =
+                    "Vui lòng nhập tên hoa quả!";
+            }
+            else if (gia > 0) {
+                document.getElementById("result").innerHTML =
+                    gia + " VNĐ/kg";
+            }
+            else {
+                document.getElementById("result").innerHTML =
+                    "Tìm không thấy";
+            }
+        }
+    </script>
+
+</body>
+</html>

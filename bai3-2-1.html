@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Mouse Event</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        .container {
+            width: 500px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid gray;
+        }
+
+        h2 {
+            margin-bottom: 25px;
+        }
+
+        .hover-box {
+            width: 250px;
+            margin: 20px auto;
+            padding: 25px;
+            background-color: lightblue;
+            border: 1px solid blue;
+            cursor: pointer;
+        }
+
+        .image-box {
+            margin: 25px;
+        }
+
+        img {
+            width: 200px;
+            transition: transform 0.3s;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+
+        button {
+            padding: 8px 15px;
+            margin: 8px;
+            cursor: pointer;
+        }
+
+        input {
+            padding: 8px;
+            width: 80%;
+            margin: 10px;
+        }
+
+        #time {
+            color: blue;
+            font-weight: bold;
+            margin: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Hiệu chỉnh theo sự kiện chuột</h2>
+
+        <!-- Yêu cầu 1 -->
+        <h3>1. Mouse Event</h3>
+
+        <div class="hover-box"
+             onmouseover="changeText()"
+             onmouseout="resetText()"
+             id="hover">
+            Hover Me
+        </div>
+
+        <hr>
+
+        <!-- Yêu cầu 2 -->
+        <h3>2. Thay đổi kích thước hình ảnh</h3>
+
+        <div class="image-box">
+            <img
+                src="https://picsum.photos/id/237/400/300"
+                alt="Hình ảnh minh họa">
+        </div>
+
+        <p>Di chuyển chuột vào hình ảnh để phóng to 10%.</p>
+
+        <hr>
+
+        <!-- Yêu cầu 3 -->
+        <h3>3. Hiển thị ngày giờ hiện tại</h3>
+
+        <button onclick="showTime()">Xem ngày giờ</button>
+
+        <div id="time"></div>
+
+        <hr>
+
+        <!-- Yêu cầu 4 -->
+        <h3>4. Chuyển chữ thành IN HOA</h3>
+
+        <input type="text" id="text"
+               placeholder="Nhập nội dung bất kỳ">
+
+        <br>
+
+        <button onclick="toUpperCaseText()">Chuyển IN HOA</button>
+
+    </div>
+
+    <script>
+
+        // Yêu cầu 1
+        function changeText() {
+            document.getElementById("hover").innerHTML =
+                "Mouse Event";
+        }
+
+        function resetText() {
+            document.getElementById("hover").innerHTML =
+                "Hover Me";
+        }
+
+
+        // Yêu cầu 3
+        function showTime() {
+
+            let now = new Date();
+
+            document.getElementById("time").innerHTML =
+                now.toLocaleString("vi-VN");
+        }
+
+
+        // Yêu cầu 4
+        function toUpperCaseText() {
+
+            let text = document.getElementById("text").value;
+
+            document.getElementById("text").value =
+                text.toUpperCase();
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra năm nhuận</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            width: 350px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid gray;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 95%;
+            padding: 8px;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Kiểm tra năm nhuận</h2>
+
+        <label>Nhập năm:</label>
+        <input type="number" id="year" placeholder="Nhập năm cần kiểm tra">
+
+        <label>Nhập tháng:</label>
+        <input type="number" id="month" placeholder="Nhập tháng (1 - 12)">
+
+        <button onclick="checkYear()">Kiểm tra</button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+        function checkYear() {
+
+            let year = Number(document.getElementById("year").value);
+            let month = Number(document.getElementById("month").value);
+
+            if (
+                document.getElementById("year").value === "" ||
+                document.getElementById("month").value === "" ||
+                !Number.isInteger(year) ||
+                !Number.isInteger(month) ||
+                year <= 0 ||
+                month < 1 ||
+                month > 12
+            ) {
+                alert("Vui lòng nhập năm và tháng hợp lệ!");
+                return;
+            }
+
+            let isLeapYear = false;
+
+            if (year % 400 === 0) {
+                isLeapYear = true;
+            } else if (year % 4 === 0 && year % 100 !== 0) {
+                isLeapYear = true;
+            }
+
+            let days;
+
+            if (month === 2) {
+
+                if (isLeapYear) {
+                    days = 29;
+                } else {
+                    days = 28;
+                }
+
+            } else if (
+                month === 4 ||
+                month === 6 ||
+                month === 9 ||
+                month === 11
+            ) {
+                days = 30;
+            } else {
+                days = 31;
+            }
+
+            let message;
+
+            if (isLeapYear) {
+                message = year + " là năm nhuận.";
+            } else {
+                message = year + " là năm không nhuận.";
+            }
+
+            document.getElementById("result").innerHTML =
+                message + "<br>" +
+                "Tháng " + month + " có " + days + " ngày.";
+        }
+    </script>
+
+</body>
+</html>
